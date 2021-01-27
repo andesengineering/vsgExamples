@@ -223,7 +223,7 @@ int main(int argc, char** argv)
         if ((num_glyphs % num_rows) != 0) ++num_rows;
 
         // use an uintArray to store the text string as the full font charcodes can go up to very large values.
-        auto text_string = vsg::uintArray::create(num_glyphs + num_rows - 1);
+        auto text_string = vsg::uintArray::create(uint32_t(num_glyphs) + uint32_t(num_rows) - 1);
         auto text_itr = text_string->begin();
 
         size_t i = 0;
@@ -260,7 +260,7 @@ int main(int argc, char** argv)
             layout->horizontal = vsg::vec3(1.0, 0.0, 0.0);
             layout->vertical = vsg::vec3(0.0, 0.0, 1.0);
             layout->color = vsg::vec4(1.0, 1.0, 1.0, 1.0);
-            layout->outlineWidth = 0.1;
+            layout->outlineWidth = 0.1f;
 
             auto text = vsg::Text::create();
             text->text = vsg::stringValue::create("VulkanSceneGraph now\nhas SDF text support.");
@@ -503,7 +503,7 @@ int main(int argc, char** argv)
                         {
                             quad.vertices[i].z += 0.5f * sin(quad.vertices[i].x);
                             quad.colors[i].r = 0.5f + 0.5f * sin(quad.vertices[i].x);
-                            quad.outlineColors[i] = vsg::vec4(cos(0.5 * quad.vertices[i].x), 0.1f, 0.0f, 1.0f);
+                            quad.outlineColors[i] = vsg::vec4(cos(0.5f * quad.vertices[i].x), 0.1f, 0.0f, 1.0f);
                             quad.outlineWidths[i] = 0.1f + 0.15f * (1.0f + sin(quad.vertices[i].x));
                         }
                     }
@@ -535,8 +535,8 @@ int main(int argc, char** argv)
         dynamic_text_layout->position = vsg::vec3(0.0, 0.0, -6.0);
         dynamic_text_layout->horizontal = vsg::vec3(1.0, 0.0, 0.0);
         dynamic_text_layout->vertical = vsg::vec3(0.0, 0.0, 1.0);
-        dynamic_text_layout->color = vsg::vec4(1.0, 0.9, 1.0, 1.0);
-        dynamic_text_layout->outlineWidth = 0.1;
+        dynamic_text_layout->color = vsg::vec4(1.0f, 0.9f, 1.0f, 1.0f);
+        dynamic_text_layout->outlineWidth = 0.1f;
 
         dynamic_text->text = dynamic_text_label;
         dynamic_text->font = font;
@@ -597,7 +597,7 @@ int main(int argc, char** argv)
     {
         // update the dynamic_text label string and position
         dynamic_text_label->value() = vsg::make_string("GpuLayoutTechnique: ", viewer->getFrameStamp()->frameCount);
-        dynamic_text_layout->position.x += 0.01;
+        dynamic_text_layout->position.x += 0.01f;
         dynamic_text->setup();
 
         // pass any events into EventHandlers assigned to the Viewer

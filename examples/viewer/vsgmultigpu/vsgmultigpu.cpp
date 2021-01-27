@@ -265,7 +265,7 @@ int main(int argc, char** argv)
         viewer->addEventHandler(vsg::AnimationPathHandler::create(master_camera, animationPath, viewer->start_point()));
     }
 
-    int numScreens = screensToUse.size();
+    int numScreens = int(screensToUse.size());
     for (int i = 0; i < screensToUse.size(); ++i)
     {
         int screenNum = screensToUse[i];

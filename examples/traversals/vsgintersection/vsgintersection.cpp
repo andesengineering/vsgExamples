@@ -37,7 +37,7 @@ public:
             {
                 std::cout << "inserting at = " << lastIntersection.worldIntersection << " ";
                 GeometryInfo info;
-                info.dimensions.set(scale, scale, scale);
+                info.dimensions.set(float(scale), float(scale), float(scale));
                 info.position = vsg::vec3(lastIntersection.worldIntersection) - info.dimensions * 0.5f;
                 scenegraph->addChild(builder->createBox(info));
             }

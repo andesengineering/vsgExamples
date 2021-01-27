@@ -16,8 +16,8 @@ void update(vsg::vec4Array2D& image, float value)
 
             float distance_from_center = vsg::length(delta);
 
-            float intensity = (sin(1.0 * angle + 30.0f * distance_from_center + 10.0 * value) + 1.0f) * 0.5f;
-            image.set(c, r, vsg::vec4(intensity * intensity, intensity, intensity, 1.0f));
+            float intensity = (sin(1.0f * angle + 30.0f * distance_from_center + 10.0f * value) + 1.0f) * 0.5f;
+            image.set(uint32_t(c), uint32_t(r), vsg::vec4(intensity * intensity, intensity, intensity, 1.0f));
         }
     }
 }
@@ -117,7 +117,7 @@ int main(int argc, char** argv)
          {0.5f, 0.5f, -0.5f},
          {-0.5f, 0.5f, -0.5f}}); // VK_FORMAT_R32G32B32_SFLOAT, VK_VERTEX_INPUT_RATE_INSTANCE, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_SHARING_MODE_EXCLUSIVE
 
-    auto colors = vsg::vec3Array::create(vertices->size(), vsg::vec3(1.0f, 1.0f, 1.0f));
+    auto colors = vsg::vec3Array::create(uint32_t(vertices->size()), vsg::vec3(1.0f, 1.0f, 1.0f));
 
     auto texcoords = vsg::vec2Array::create(
         {{0.0f, 0.0f},
